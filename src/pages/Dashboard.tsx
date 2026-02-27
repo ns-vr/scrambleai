@@ -5,6 +5,7 @@ import ShelterCard from "@/components/ShelterCard";
 import ShelterModal from "@/components/ShelterModal";
 import EventLog from "@/components/EventLog";
 import DataSourceOverlay from "@/components/DataSourceOverlay";
+import CityMap from "@/components/CityMap";
 import type { ZoneStatus } from "@/components/ZoneCard";
 
 interface Shelter {
@@ -92,27 +93,19 @@ export default function Dashboard() {
         </section>
       </div>
 
-      {/* City Map Placeholder */}
+      {/* Live City Map */}
       <motion.section
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         className="data-panel border border-border relative overflow-hidden"
-        style={{ minHeight: 300 }}
       >
-        <div className="absolute top-3 left-3 z-10">
+        <div className="flex items-center justify-between mb-3">
+          <h2 className="font-heading text-sm uppercase tracking-[0.2em] text-muted-foreground">
+            Live City Map
+          </h2>
           <DataSourceOverlay latency="87ms" lastUpdate="14:33:12 UTC" />
         </div>
-        <div className="flex items-center justify-center h-72 text-muted-foreground">
-          <div className="text-center">
-            <div className="font-heading text-lg mb-1">Live City Map</div>
-            <p className="text-xs font-mono text-muted-foreground">
-              OpenStreetMap + Flood Overlay + Route Visualization
-            </p>
-            <p className="text-xs text-muted-foreground mt-2">
-              Connect Lovable Cloud to enable real map integration
-            </p>
-          </div>
-        </div>
+        <CityMap />
       </motion.section>
 
       {/* Shelter Modal */}
